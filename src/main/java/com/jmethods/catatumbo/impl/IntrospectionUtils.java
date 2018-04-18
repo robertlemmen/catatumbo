@@ -109,7 +109,8 @@ public class IntrospectionUtils {
   public static MethodHandle findReadMethodHandle(Field field) {
     String readMethodName;
     MethodHandle mh = null;
-    if (boolean.class.equals(field.getType())) {
+    if (boolean.class.equals(field.getType())
+        || Boolean.class.equals(field.getType())) {
       readMethodName = IntrospectionUtils.getReadMethodNameForBoolean(field);
       mh = findInstanceMethod(field.getDeclaringClass(), readMethodName, field.getType());
     }
